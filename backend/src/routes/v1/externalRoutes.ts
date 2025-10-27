@@ -1,0 +1,10 @@
+import { Router } from 'express';
+
+const router = Router();
+
+// External routes will be added here as features are implemented
+// Example:
+// router.use('/public', publicRoutes);
+// router.use('/security', securityRoutes);
+
+export default router;
