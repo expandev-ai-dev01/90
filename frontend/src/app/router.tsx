@@ -7,6 +7,8 @@ import { LoadingSpinner } from '@/core/components/LoadingSpinner';
 const HomePage = lazy(() => import('@/pages/Home'));
 const LoginPage = lazy(() => import('@/pages/Login'));
 const DashboardPage = lazy(() => import('@/pages/Dashboard'));
+const ClientManagementPage = lazy(() => import('@/pages/ClientManagement'));
+const ClientDetailPage = lazy(() => import('@/pages/ClientDetail'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 /**
@@ -54,6 +56,27 @@ export const router = createBrowserRouter([
                 <DashboardPage />
               </Suspense>
             ),
+          },
+          {
+            path: 'clients',
+            children: [
+              {
+                index: true,
+                element: (
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <ClientManagementPage />
+                  </Suspense>
+                ),
+              },
+              {
+                path: ':id',
+                element: (
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <ClientDetailPage />
+                  </Suspense>
+                ),
+              },
+            ],
           },
         ],
       },
